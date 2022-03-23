@@ -1,1 +1,4 @@
 *.ipynb_checkpoints
+*.log
+*_tmp.jl
+*.vscode

@@ -1,18 +1,41 @@
-using Test
-using NBInclude
+const NUMQUESTIONS = 3
+if !(@isdefined SUFFIX)
+    SUFFIX = ""
+end
 
-@testset "HW4" begin
-    @testset "Question 1" begin
-        println("Testing Question 1...")
-        @nbinclude(joinpath(@__DIR__, "..", "src", "Q1.ipynb"))
+questions_to_grade = collect(1:NUMQUESTIONS)
+if !isempty(ARGS)
+    questions_to_grade = Int[]
+    for arg in ARGS
+        question = tryparse(Int, arg)
+        if !isnothing(question) && (0 < question <= NUMQUESTIONS)
+            push!(questions_to_grade, question)
+        end
     end
-    @testset "Question 2" begin
-        using NBInclude
-        println("Testing Question 2...")
-        @nbinclude(joinpath(@__DIR__, "..", "src", "Q2.ipynb"))
+    if isempty(questions_to_grade)
+        @warn "Couldn't parse any of the input arguments as question numbers. Enter the question to grade, separated by spaced."
     end
-    @testset "Question 3" begin
-        println("Testing Question 3...")
-        @nbinclude(joinpath(@__DIR__, "..", "src", "Q3.ipynb"))
-    end
+    sort!(questions_to_grade)
+end
+
+
+# Create a module for each question
+for i in 1:NUMQUESTIONS 
+@eval module $(Symbol("Q" * string(i) * SUFFIX))
+include("autograder.jl")
+getname() = string(split(string(@__MODULE__), ".")[end])
+grade() = Autograder.gradequestion(getname()) 
+checktestsets(solutiondir=joinpath(@__DIR__, "..")) = Autograder.checktestsets(getname(), solutiondir)
+end
+end
+
+solutiondir = joinpath(@__DIR__, "..")
+
+# Grade all of the questions
+modules = [@eval $(Symbol("Q" * string(i) * SUFFIX)) for i = 1:NUMQUESTIONS]
+modules[1].grade()
+results = map(questions_to_grade) do question 
+    mod = modules[question]
+    mod.checktestsets(solutiondir)
+    mod.grade()[1]
 end
