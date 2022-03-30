@@ -1,0 +1,25 @@
+  Activating environment at `~/Classes/16745_OptimalControl/hw4_solutions/Project.toml`
+[32;1m
+SOLVE COMPLETED
+[0m solved using the [0m[36;1mALTRO[0m Solver,
+ part of the Altro.jl package developed by the REx Lab at Stanford and Carnegie Mellon Universities
+[34;1m
+  Solve Statistics
+[0m    Total Iterations: 877
+[0m    Solve Time: 111.750211 (ms)
+[34;1m
+  Covergence
+[0m    Terminal Cost: 5607.5892866843205
+[0m    Terminal dJ: [32m1.4423168067878578e-5
+[0m    Terminal gradient: [32m0.009015517830683833
+[0m    Terminal constraint violation: [32m3.501533653182953e-5
+[0m    Solve Status: [1m[32mSOLVE_SUCCEEDED
+[0mIter 0: sse = 5.845
+Iter 1: sse = 3.949 (1.90e+00)
+Iter 2: sse = 3.084 (8.65e-01)
+Iter 3: sse = 2.533 (5.51e-01)
+Iter 4: sse = 2.226 (3.07e-01)
+Iter 5: sse = 2.128 (9.82e-02)
+Iter 6: sse = 2.100 (2.81e-02)
+Iter 7: sse = 2.089 (1.12e-02)
+Iter 8: sse = 2.088 (7.73e-04)
