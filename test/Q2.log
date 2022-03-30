@@ -136,8 +136,8 @@ Number of inequality constraint evaluations          = 139
 Number of equality constraint Jacobian evaluations   = 87
 Number of inequality constraint Jacobian evaluations = 87
 Number of Lagrangian Hessian evaluations             = 0
-Total CPU secs in IPOPT (w/o function evaluations)   =      3.077
-Total CPU secs in NLP function evaluations           =      0.521
+Total CPU secs in IPOPT (w/o function evaluations)   =      3.804
+Total CPU secs in NLP function evaluations           =      0.604
 
 EXIT: Optimal Solution Found.
   Activating environment at `~/Classes/16745_OptimalControl/hw4_solutions/Project.toml`
