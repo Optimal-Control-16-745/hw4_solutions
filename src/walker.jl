@@ -126,17 +126,6 @@ function TrajOptPlots.visualize!(vis, model::SimpleWalker, x::StaticVector)
     settransform!(vis["robot"]["torso"]["Rleg"]["geom"], LinearMap(Diagonal(SA[1,1,Rlen])))
 end
 
-# ## Create visualizer window
-# vis = Visualizer()
-# open(vis, Blink.Window())
-
-# ## Set up model
-# model = SimpleWalker()
-# x = SA[0,1, -0.5,0, 0.2,0.5]
-# delete!(vis)
-# foot = set_mesh!(vis, model)
-# visualize!(vis, model, x)
-
 function stance1_dynamics(model::SimpleWalker, x,u)
     #Foot 1 is in contact
     mb,mf = model.mb, model.mf
